@@ -7,7 +7,8 @@ use std::io;
 fn main() {
     println!("Guess a number! (1-100)");
 
-    let number/*: u32*/ = rand::thread_rng().gen_range(1, 101); // The type annotation is not necessary as it is inferred as `u32` due to the comparison with `guess`, [re]defined on line 22, on line 26
+    // The type annotation is not necessary as it is inferred as `u32` due to the comparison with `guess`, [re]defined on line 22, on line 26
+    let number/*: u32*/ = rand::thread_rng().gen_range(1, 101);
 
     // println!("The number is {}.", number);
 
@@ -16,7 +17,8 @@ fn main() {
 
         let mut guess = String::new();
 
-        io::stdin() // Would have been `std::io::stdin` if I hadn't included `use std::io;`
+        // Would have been `std::io::stdin` if I hadn't included `use std::io;`
+        io::stdin()
             .read_line(&mut guess)
             .expect("Failed to read line!");
 

@@ -1,17 +1,10 @@
 // https://doc.rust-lang.org/book/ch03-05-control-flow.html
 
-use colored::*;
 use std::io;
 
 fn main() {
-    println!(
-        "{} {}\nSupports {} (C), {} (F), and {} (K)",
-        "Temperature".red(),
-        "Converter".blue(),
-        "Celsius".green(),
-        "Farenheit".yellow(),
-        "Kelvin".magenta()
-    );
+    println!("Temperature Converter\nSupports Celsius (C), Farenheit (F), Kelvin (K)");
+
     // Getting `temp`
     loop {
         println!("Enter a temperature:");
@@ -29,12 +22,7 @@ fn main() {
 
         // Getting `from`
         loop {
-            println!(
-                "Enter the original unit ({}/{}/{}):",
-                "C".green(),
-                "F".yellow(),
-                "K".magenta()
-            );
+            println!("Enter the original unit (C/F/K):");
 
             let mut from = String::new();
 
@@ -45,12 +33,7 @@ fn main() {
 
             // Getting `to`
             loop {
-                println!(
-                    "Enter your desired unit ({}/{}/{}):",
-                    "C".green(),
-                    "F".yellow(),
-                    "K".magenta()
-                );
+                println!("Enter your desired unit (C/F/K):");
 
                 let mut to = String::new();
                 io::stdin()

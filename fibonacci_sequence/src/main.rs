@@ -1,7 +1,6 @@
 // https://doc.rust-lang.org/book/ch03-05-control-flow.html
 
 use std::io;
-use std::time::Instant;
 
 fn main() {
     println!("Fibonacci Number Generator");
@@ -31,7 +30,8 @@ fn main() {
             };
 
             // Checks the duration of the `fib()` function to compare `tuple` and `array` performance
-            let start = Instant::now();
+            /*
+            let start = std::time::Instant::now();
             let val: u128 = fib(num - 1);
             println!(
                 "\nThe {}th Fibonacci number is: {} (Calculated in {} nanoseconds)",
@@ -39,6 +39,9 @@ fn main() {
                 val,
                 start.elapsed().as_nanos()
             );
+            */
+
+            println!("\nThe {}th Fibonacci number is: {}", num, fib(num - 1));
         } else {
             break;
         }
@@ -46,6 +49,7 @@ fn main() {
 }
 
 // Array Version
+/*
 fn fib(n: u32) -> u128 {
     let mut x: [u128; 2] = [1, 1];
     for _ in 1..n {
@@ -53,9 +57,9 @@ fn fib(n: u32) -> u128 {
     }
     x[1]
 }
+*/
 
 // Tuple Version
-/*
 fn fib(n: u32) -> u128 {
     let mut x: (u128, u128) = (1, 1);
     for _ in 1..n {
@@ -63,4 +67,3 @@ fn fib(n: u32) -> u128 {
     }
     x.1
 }
-*/

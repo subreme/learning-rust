@@ -1,28 +1,32 @@
 use std::io;
 
 fn main() {
+    println!("Fibonacci Number Generator");
     loop {
-        println!("Which number? (Click `Enter` to exit!)");
+        println!("\nWhich number? (Click `Enter` to exit!)");
+
         let mut num = String::new();
+
         io::stdin()
             .read_line(&mut num)
             .expect("Failed to read input!");
+        // Only runs if the input wasn't blank, allowing for the use of `Enter` to quit
         if !num.trim().is_empty() {
             let num: u32 = match num.trim().parse() {
                 Ok(num) => {
                     if 1 <= num && num <= 185 {
                         num
                     } else {
-                        println!("Invalid range! Please input numbers between 1 and 185.");
+                        println!("\nInvalid range! Please input numbers between 1 and 185.");
                         continue;
                     }
                 }
                 Err(_) => {
-                    println!("Invalid input!");
+                    println!("\nInvalid input!");
                     continue;
                 }
             };
-            println!("{}", fib(num - 1));
+            println!("\nThe {}th Fibonacci number is: {}", num, fib(num - 1));
         } else {
             break;
         }

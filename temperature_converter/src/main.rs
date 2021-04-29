@@ -7,7 +7,7 @@ fn main() {
 
     // Getting `temp`
     loop {
-        println!("Enter a temperature:");
+        println!("\nEnter a temperature:");
         let mut temp = String::new();
         io::stdin()
             .read_line(&mut temp)
@@ -15,14 +15,14 @@ fn main() {
         let temp: f64 = match temp.trim().parse() {
             Ok(num) => num,
             Err(_) => {
-                println!("Invalid input!");
+                println!("\nInvalid input!");
                 continue;
             }
         };
 
         // Getting `from`
         loop {
-            println!("Enter the original unit (C/F/K):");
+            println!("\nEnter the original unit (C/F/K):");
 
             let mut from = String::new();
 
@@ -31,9 +31,21 @@ fn main() {
                 .expect("Failed to read input!");
             let from = from.trim().to_lowercase();
 
+            // Checking if input is valid
+            if from != "c"
+                && from != "celsius"
+                && from != "f"
+                && from != "farenheit"
+                && from != "k"
+                && from != "kelvin"
+            {
+                println!("\nInvalid input! Please type one of the following options:\n- `Celsius` or `C`\n- `Farenheit` or `F`\n- `Kelvin` or `K`\n(Not case sensitive)");
+                continue;
+            }
+
             // Getting `to`
             loop {
-                println!("Enter your desired unit (C/F/K):");
+                println!("\nEnter your desired unit (C/F/K):");
 
                 let mut to = String::new();
                 io::stdin()
@@ -41,42 +53,54 @@ fn main() {
                     .expect("Failed to read input!");
                 let to = to.trim().to_lowercase();
 
+                // Checking if input is valid
+                if from != "c"
+                    && from != "celsius"
+                    && from != "f"
+                    && from != "farenheit"
+                    && from != "k"
+                    && from != "kelvin"
+                {
+                    println!("\nInvalid input! Please type one of the following options:\n- `Celsius` or `C`\n- `Farenheit` or `F`\n- `Kelvin` or `K`\n(Not case sensitive)");
+                    continue;
+                }
+
                 // Converting temperature
                 // From Celsius
                 if from == "c" || from == "celsius" {
                     // Celsius to Celsius
                     if to == "c" || to == "celsius" {
-                        break println!("Result: {}", temp);
+                        break println!("\nResult: {}", temp);
                     // Celsius to Farenheit
                     } else if to == "f" || to == "farenheit" {
-                        break println!("Result: {}", temp * 9.0 / 5.0 + 32.0);
+                        break println!("\nResult: {}", temp * 9.0 / 5.0 + 32.0);
                     // Celsius to Kelvin
                     } else if to == "k" || to == "kelvin" {
-                        break println!("Result: {}", temp + 273.15);
+                        break println!("\nResult: {}", temp + 273.15);
                     }
                 // From Farenheit
                 } else if from == "f" || from == "farenheit" {
                     // Farenheit to Celsius
                     if to == "c" || to == "celsius" {
-                        break println!("Result: {}", (temp - 32.0) * 5.0 / 9.0);
+                        break println!("\nResult: {}", (temp - 32.0) * 5.0 / 9.0);
                     // Farenheit to Farenheit
                     } else if to == "f" || to == "farenheit" {
-                        break println!("Result: {}", temp);
+                        break println!("\nResult: {}", temp);
                     // Farenheit to Kelvin
                     } else if to == "k" || to == "kelvin" {
-                        break println!("Result: {}", (temp - 32.0) * 5.0 / 9.0 + 273.15);
+                        break println!("\nResult: {}", (temp - 32.0) * 5.0 / 9.0 + 273.15);
                     }
                 // From Kelvin
                 } else if from == "k" || from == "kelvin" {
                     // Kelvin to Celsius
                     if to == "c" || to == "celsius" {
-                        break println!("Result: {}", temp - 273.15);
+                        break println!("\nResult: {}", temp - 273.15);
                     // Kelvin to Farenheit
                     } else if to == "f" || to == "farenheit" {
-                        break println!("Result: {}", (temp - 273.15) * 9.0 / 5.0 + 32.0);
+                        break println!("\nResult: {}", (temp - 273.15) * 9.0 / 5.0 + 32.0);
                     // Kelvin to Kelvin
                     } else if to == "k" || to == "kelvin" {
-                        break println!("Result: {}", temp);
+                        break println!("\nResult: {}", temp);
                     }
                 }
             }

@@ -84,4 +84,10 @@ fn main() {
         }
         break;
     }
+    // Waits for a last input before closing the program
+    println!("\nClick `Enter` to close...");
+    let mut close = String::new();
+    io::stdin()
+        .read_line(&mut close)
+        .expect("Failed to read input!");
 }

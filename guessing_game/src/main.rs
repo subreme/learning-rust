@@ -1,8 +1,7 @@
 // https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html
 
 use rand::Rng;
-use std::cmp::Ordering;
-use std::io;
+use std::{cmp::Ordering, io};
 
 fn main() {
     println!("Guess a number! (1-100)");

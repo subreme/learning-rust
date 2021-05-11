@@ -1,3 +1,5 @@
+// https://doc.rust-lang.org/book/ch08-03-hash-maps.html#summary
+
 use std::collections::HashMap;
 use std::io;
 

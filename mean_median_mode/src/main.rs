@@ -7,27 +7,32 @@ fn main() {
     println!("Mean Median Mode...");
     'main: loop {
         let nums: Vec<f64> = prompt();
-        println!("\nMean: {}", mean(&nums));
-        println!("Median: {}", median(&nums));
-        println!("Mode: {}", {
-            let mut x = String::new();
-            for num in mode(&nums) {
-                x += &num.to_string();
-                x += " ";
+        if nums.len() > 0 {
+            println!("\nMean: {}", mean(&nums));
+            println!("Median: {}", median(&nums));
+            println!("Mode: {}", {
+                let mut x = String::new();
+                for num in mode(&nums) {
+                    x += &num.to_string();
+                    x += " ";
+                }
+                x
+            });
+            loop {
+                println!("\nRun again?");
+                let mut run_again = String::new();
+                io::stdin()
+                    .read_line(&mut run_again)
+                    .expect("Failed to read input!");
+                match run_again.trim().to_lowercase().as_str() {
+                    "yes" | "y" => break,
+                    "no" | "n" => break 'main,
+                    _ => continue,
+                };
             }
-            x
-        });
-        loop {
-            println!("\nRun again?");
-            let mut run_again = String::new();
-            io::stdin()
-                .read_line(&mut run_again)
-                .expect("Failed to read input!");
-            match run_again.trim().to_lowercase().as_str() {
-                "yes" | "y" => break,
-                "no" | "n" => break 'main,
-                _ => continue,
-            };
+        } else {
+            println!("\nPlease include at least one number!");
+            continue;
         }
     }
 }
@@ -43,7 +48,7 @@ fn prompt() -> Vec<f64> {
         for num in input.trim().split_whitespace() {
             match num.parse::<f64>() {
                 Ok(x) => nums.push(x),
-                Err(_) => println!("Error: `{}` is not an integer!", num),
+                Err(_) => println!("\nError: `{}` is not a number", num),
             }
         }
         nums.sort_by(|a, b| a.partial_cmp(b).unwrap());

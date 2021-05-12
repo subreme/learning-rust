@@ -1,21 +1,35 @@
-// https://doc.rust-lang.org/book/ch08-03-hash-maps.html#summary
+// https://doc.rust-lang.org/book/ch08-03-hash-maps.html?highlight=summary#summary
 
 use std::collections::HashMap;
 use std::io;
 
 fn main() {
     println!("Mean Median Mode...");
-    let nums: Vec<f64> = prompt();
-    println!("\nMean: {}", mean(&nums));
-    println!("Median: {}", median(&nums));
-    println!("Mode: {}", {
-        let mut x = String::new();
-        for num in mode(&nums) {
-            x += &num.to_string();
-            x += " ";
+    'main: loop {
+        let nums: Vec<f64> = prompt();
+        println!("\nMean: {}", mean(&nums));
+        println!("Median: {}", median(&nums));
+        println!("Mode: {}", {
+            let mut x = String::new();
+            for num in mode(&nums) {
+                x += &num.to_string();
+                x += " ";
+            }
+            x
+        });
+        loop {
+            println!("\nRun again?");
+            let mut run_again = String::new();
+            io::stdin()
+                .read_line(&mut run_again)
+                .expect("Failed to read input!");
+            match run_again.trim().to_lowercase().as_str() {
+                "yes" | "y" => break,
+                "no" | "n" => break 'main,
+                _ => continue,
+            };
         }
-        x
-    });
+    }
 }
 
 fn prompt() -> Vec<f64> {

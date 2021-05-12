@@ -1,4 +1,4 @@
-// https://doc.rust-lang.org/book/ch03-05-control-flow.html#summary
+// https://doc.rust-lang.org/book/ch03-05-control-flow.html?highlight=summary#summary
 
 use std::io;
 

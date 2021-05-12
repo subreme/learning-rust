@@ -51,7 +51,7 @@ fn prompt() -> Vec<f64> {
                 Err(_) => println!("\nError: `{}` is not a number", num),
             }
         }
-        nums.sort_by(|a, b| a.partial_cmp(b).unwrap());
+        nums.sort_by(|a, b| a.partial_cmp(b).expect("Failed to sort numbers!"));
         break nums;
     };
 }
